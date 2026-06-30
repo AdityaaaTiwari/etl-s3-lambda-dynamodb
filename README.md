@@ -259,6 +259,8 @@ End-to-end CI/CD pipeline execution.
 <img src="screenshots/codepipeline.png" width="900">
 </p>
 
+---
+
 ##  Dispatcher Lambda Test
 
 The Dispatcher Lambda successfully detects the uploaded file type and invokes the appropriate parser Lambda.
