@@ -208,9 +208,10 @@ etl-s3-lambda-dynamodb/
 ```
 
 ---
+
 ## Project Screenshots
 
-### Amazon S3 (Raw Dataset)
+## Amazon S3 (Raw Dataset)
 
 Raw Delhi Transit dataset uploaded to Amazon S3.
 
@@ -220,7 +221,7 @@ Raw Delhi Transit dataset uploaded to Amazon S3.
 
 ---
 
-### AWS Lambda Execution logs
+## AWS Lambda Execution logs
 
 CloudWatch logs showing a successful ETL pipeline execution.
 
@@ -230,7 +231,7 @@ CloudWatch logs showing a successful ETL pipeline execution.
 
 ---
 
-### Amazon DynamoDB
+## Amazon DynamoDB
 
 Processed records stored in the `clean_records` table.
 
@@ -240,7 +241,7 @@ Processed records stored in the `clean_records` table.
 
 ---
 
-### GitHub Actions
+## GitHub Actions
 
 Continuous Integration workflow executed successfully.
 
@@ -250,7 +251,7 @@ Continuous Integration workflow executed successfully.
 
 ---
 
-### AWS CodePipeline
+## AWS CodePipeline
 
 End-to-end CI/CD pipeline execution.
 
