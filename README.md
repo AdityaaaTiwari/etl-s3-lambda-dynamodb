@@ -67,6 +67,44 @@ Transit Dataset (stops_v3.txt)
 ```
 ---
 
+## 🚀 File Type Based Routing
+
+The project uses a **Dispatcher Lambda** that identifies the uploaded file type and invokes the appropriate parser Lambda.
+
+| File Type | Lambda |
+|-----------|--------|
+| `.txt` | `transit-etl-lambda` |
+| `.csv` | `csv-parser-lambda` |
+
+This design makes the ETL pipeline modular and easy to extend for additional file formats.
+
+## 📌 Dispatcher Workflow
+
+```text
+                  Upload File
+                       │
+                       ▼
+                 Amazon S3 Bucket
+                       │
+                       ▼
+              Dispatcher Lambda
+                       │
+          ┌────────────┴────────────┐
+          ▼                         ▼
+      TXT File                  CSV File
+          │                         │
+          ▼                         ▼
+ transit-etl-lambda         csv-parser-lambda
+          │                         │
+          └────────────┬────────────┘
+                       ▼
+               Amazon DynamoDB
+                       │
+                       ▼
+             Amazon CloudWatch
+```
+---
+
 ## Project Overview
 
 This project demonstrates a **Serverless ETL Pipeline** built on AWS for processing Delhi Transit data.
@@ -219,6 +257,20 @@ End-to-end CI/CD pipeline execution.
 <p align="center">
 <img src="screenshots/codepipeline.png" width="900">
 </p>
+
+##  Dispatcher Lambda Test
+
+The Dispatcher Lambda successfully detects the uploaded file type and invokes the appropriate parser Lambda.
+
+![Dispatcher Lambda Test](screenshots/dispatcher-test.png)
+
+---
+
+##  Dispatcher CloudWatch Logs
+
+CloudWatch logs confirming successful execution of the Dispatcher Lambda.
+
+![Dispatcher CloudWatch](screenshots/dispatcher-cloudwatch.png)
 
 ---
 ## Running Locally
