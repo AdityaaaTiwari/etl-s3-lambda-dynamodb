@@ -21,6 +21,8 @@ A production-style <b>Serverless ETL Pipeline</b> built on AWS that automaticall
 
 ## 🏗️ Architecture Overview
 
+The following architecture illustrates the complete serverless ETL workflow, including automated CI/CD, data ingestion, processing, storage, and monitoring.
+
 ```text
                         DELHI TRANSIT SERVERLESS ETL PIPELINE
 
@@ -114,9 +116,9 @@ This project demonstrates a **Serverless ETL Pipeline** built on AWS for process
 - Event-driven ETL using AWS Lambda
 - Raw data stored in Amazon S3
 - Clean records stored in Amazon DynamoDB
-- CloudWatch monitoring
+- CloudWatch logging and monitoring
 - GitHub Actions for CI
-- AWS CodeBuild for build validation
+- AWS CodeBuild for automated build and testing
 - AWS CodePipeline for CI/CD automation
 
 ### Workflow
@@ -191,19 +193,14 @@ etl-s3-lambda-dynamodb/
 │       └── ci.yml
 │
 ├── sample_data/
-│   └── stops_v3.txt
 │
 ├── screenshots/
-│   ├── s3.png
-│   ├── lambda.png
-│   ├── dynamodb.png
-│   ├── github-actions.png
-│   └── codepipeline.png
 │
 ├── lambda_function.py
+├── dispatcher_lambda.py
+├── csv_parser_lambda.py
 ├── requirements.txt
 ├── buildspec.yml
-├── .gitignore
 └── README.md
 ```
 
@@ -301,7 +298,11 @@ Run the Lambda function locally:
 ```bash
 python lambda_function.py
 ```
+
+> **Note:** Running `lambda_function.py` locally is intended for development and testing. In production, the ETL pipeline is triggered automatically by Amazon S3 events.
+
 ---
+
 ## 🚀 Future Improvements
 
 - Schedule automated ETL execution using **Amazon EventBridge**.
